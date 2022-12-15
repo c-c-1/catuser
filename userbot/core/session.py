@@ -5,13 +5,18 @@ from telethon.sessions import StringSession
 
 from ..Config import Config
 from .client import CatUserBotClient
+from .bothseesion import bothseesion
+from .logger import logging
 
+
+LOGS = logging.getLogger("Catuserbot")
 __version__ = "2.10.6"
+
 
 loop = None
 
 if Config.STRING_SESSION:
-    session = StringSession(str(Config.STRING_SESSION))
+    session = bothseesion(Config.STRING_SESSION, LOGS)
 else:
     session = "catuserbot"
 
